@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: my-replicaset
+  labels:
+    project: my-project-cal-replicaset
+spec:   
+  replicas: 10
+  selector:
+    matchLabels:
+      project: my-project-cal-pod1
+  template:
+    metadata:
+      labels:
+        project: my-project-cal-pod1
+    spec:
+      containers:
+        - name: my-container-cal-pod1
+          image: sharjikahamed/mdcalculator
+          ports:
+            - containerPort: 3000 
